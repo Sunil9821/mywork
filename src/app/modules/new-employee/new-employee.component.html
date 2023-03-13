@@ -1,0 +1,85 @@
+<div class="panel">
+    <h2>{{isEdit == false?'Add New Employee':'Edit Employee'}}</h2>
+    <form [formGroup]="employeeForm">
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Firstname</mat-label>
+                    <input type="text" matInput name="fname" formControlName="fname" required>
+                    <mat-error *ngIf="employeeForm.get('fname').hasError('required')">Please enter first name</mat-error>
+                    <mat-error *ngIf="employeeForm.get('fname').hasError('pattern')">Firstname must be between 2-15 character</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Lastname</mat-label>
+                    <input type="text" matInput name="lname" formControlName="lname" required>
+                    <mat-error *ngIf="employeeForm.get('lname').hasError('required')">Please enter last name</mat-error>
+                    <mat-error *ngIf="employeeForm.get('lname').hasError('pattern')">Lastname must be between 2-15 character</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>MObile</mat-label>
+                    <input type="text" matInput name="mobile" formControlName="mobile" (keyup)="validateNumber($event)" required>
+                    <mat-error *ngIf="employeeForm.get('mobile').hasError('required')">Please enter mobile no.</mat-error>
+                    <mat-error *ngIf="employeeForm.get('mobile').hasError('pattern')">Mobile number be 10 digits</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput name="email" formControlName="email" required>
+                    <mat-error *ngIf="employeeForm.get('email').hasError('required')">Please enter email</mat-error>
+                    <mat-error *ngIf="employeeForm.get('email').hasError('pattern')">Please enter valid email</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Dept</mat-label>
+                    <!-- <input type="text" matInput name="fname" formControlName="fname" required> -->
+                    <mat-select formControlName="dept" required>
+                        <mat-option value="Accounts">Accounts</mat-option>
+                        <mat-option value="Finance">Finance</mat-option>
+                        <mat-option value="Sales">Sales</mat-option>
+                        <mat-option value="IT">IT</mat-option>
+                        <mat-option value="Development">Development</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="employeeForm.get('dept').hasError('required')">Please select dept</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Designation</mat-label>
+                    <mat-select formControlName="designation" required>
+                        <mat-option value="Executive">Executive</mat-option>
+                        <mat-option value="Senior Executive">Senior Executive</mat-option>
+                        <mat-option value="Assistant Manager">Assistant Manager</mat-option>
+                        <mat-option value="Manager">Manager</mat-option>
+                        <mat-option value="Senior Manager">Senior Manager</mat-option>
+                        <mat-option value="General Manager">General Manager</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="employeeForm.get('designation').hasError('required')">Please select designation</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Manager</mat-label>
+                    <input type="text" matInput name="manager" formControlName="manager" required>
+                    <mat-error *ngIf="employeeForm.get('manager').hasError('required')">Please enter manager name</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>City</mat-label>
+                    <input type="text" matInput name="city" formControlName="city" required>
+                    <mat-error *ngIf="employeeForm.get('city').hasError('required')">Please enter city name</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="text-center">
+            <button mat-flat-button type="button" color="primary" class="mx-2" (click)="resetEmployeeForm()">Reset</button>
+            <button mat-flat-button type="button" color="primary" class="mx-2" (click)="submitEmployeeForm()" [disabled]="!employeeForm.valid">Submit</button>
+        </div>
+    </form>
+</div>

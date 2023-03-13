@@ -1,0 +1,17 @@
+.expand {
+    max-height: 520px;
+    overflow: auto !important;
+}
+
+.title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+::ng-deep.mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+}
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 10px !important;
+}

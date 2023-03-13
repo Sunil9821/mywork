@@ -1,0 +1,8 @@
+create table employeesList ( eid int(3) auto_increment, fname varchar(20), lname varchar(20), mobile bigint(10), email varchar(30), dept varchar(20), designation varchar(20), manager varchar(20), city varchar(30), primary key(eid) );
+
+
+alter table employeeslist auto_increment=101;
+
+
+insert into employeeslist(fname, lname, mobile, email, dept, designation, manager, city) values('sunilkumar', 'maurya', '9821540837', 'skm.gmail.com', 'development', 'senior', 'sushil', 'mumbai');
+insert into employeeslist(fname, lname, mobile, email, dept, designation, manager, city) values('akhilesh', 'maurya', '9988657907', 'akhil.gmail.com', 'finance', 'senior', 'sushil', 'mumbai');

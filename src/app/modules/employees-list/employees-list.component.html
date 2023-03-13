@@ -1,0 +1,31 @@
+<div class="panel">
+    <div class="d-flex justify-content-end align-items-center">
+        <!-- <img src="../../../assets/images/excel.jpg" alt="" width="40px" height="40px"> -->
+        <span class="me-2"><img src="assets/images/excel.jpg" alt="" (click)="exportExcel()" width="40px" height="40px"></span>
+        <mat-form-field appearance="outline">
+            <mat-label>Search</mat-label>
+            <input type="text" matInput name="search" (keyup)="searchEmployee($event)">
+        </mat-form-field>
+    </div>
+    <div class="expand row" #table>
+        <table mat-table matSort [dataSource]="displayData">
+            <ng-container *ngFor="let item of displayColumns" matColumnDef="{{item}}">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef><p class="m-0 title">{{item | titlecase}}</p></th>
+                <td mat-cell *matCellDef="let row">
+                    <p class="m-0" *ngIf="item != 'action'">{{row[item]}}</p>
+                    <div *ngIf="item == 'action'">
+                        <mat-icon class="mx-1" matTooltip="Delete" (click)="editEmployee(row)">edit</mat-icon>
+                        <mat-icon class="mx-1" matTooltip="Delete" (click)="deleteEmployee(row)">delete</mat-icon>
+                    </div>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayColumns; sticky:true"></tr>
+            <tr mat-row *matRowDef="let row; columns:displayColumns"></tr>
+            <tr mat-cell class="mat-cell" *matNoDataRow>
+                <td class="text-center" colspan="99">
+                    <p class="m-0">No Data Available</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
